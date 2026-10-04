@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>発表ベル｜学会・ゼミ向けの発表タイマー</title>
+  <meta name="description" content="1鈴・2鈴・3鈴で時間を知らせる発表タイマー．ブラウザだけで動き，一度開けばオフラインでも使えます．">
+  <meta name="author" content="aL">
+  <meta name="theme-color" content="#F4F6F4" id="theme-color">
+  <meta property="og:title" content="発表ベル">
+  <meta property="og:description" content="1鈴・2鈴・3鈴で時間を知らせる，学会・ゼミ向けの発表タイマー．">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <script src="/theme-init.js"></script>
+</head>
+<body>
+  <a class="skip" href="#clock">本文へ移動</a>
+  <div class="flash" id="flash" aria-hidden="true"></div>
+
+  <header class="bar">
+    <h1 class="title">発表ベル</h1>
+    <div class="bar-actions">
+      <button type="button" class="chip" id="btn-theme" aria-label="表示の明るさを切り替える">ダーク</button>
+      <button type="button" class="chip" id="btn-settings" aria-expanded="false" aria-controls="settings">設定</button>
+    </div>
+  </header>
+
+  <main class="stage" id="stage" data-phase="talk">
+    <p class="phase" id="phase" aria-live="polite">発表中</p>
+    <p class="clock" id="clock" role="timer" aria-live="off">15:00</p>
+    <p class="sub" id="sub">発表の残り時間</p>
+    <p class="next"><span id="next-text">次のベル　1鈴　12:00</span><span class="dots" id="dots" aria-label="鳴ったベル">○○○</span></p>
+
+    <div class="controls">
+      <button type="button" class="btn btn-primary btn-main" id="btn-toggle">開始</button>
+      <button type="button" class="btn" id="btn-minus" aria-label="1分戻す">−1分</button>
+      <button type="button" class="btn" id="btn-plus" aria-label="1分進める">＋1分</button>
+      <button type="button" class="btn" id="btn-reset">リセット</button>
+      <button type="button" class="btn" id="btn-full">全画面</button>
+    </div>
+
+    <p class="notice" id="notice">計測中は画面をつけたままにしてください（音は画面を消すと鳴りません）。</p>
+    <p class="notice warn" id="wake-warn" hidden>この端末では画面を自動でつけたままにできません．画面の自動ロックをオフにしてください。</p>
+    <p class="keys">キー操作：Space 開始／一時停止　R リセット　← → ±1分　F 全画面　M 消音</p>
+  </main>
+
+  <section class="panel" id="settings" aria-label="設定" hidden>
+    <h2>時間の設定</h2>
+    <div class="presets" id="presets" role="group" aria-label="プリセット"></div>
+
+    <div class="custom" id="custom">
+      <label class="row"><input type="checkbox" id="use-b1"><span class="row-name">1鈴</span><input type="text" id="b1" inputmode="numeric" autocomplete="off" aria-label="1鈴の時刻（分:秒）"><span class="row-note">発表終了の予告</span></label>
+      <label class="row"><span class="row-spacer"></span><span class="row-name">2鈴</span><input type="text" id="b2" inputmode="numeric" autocomplete="off" aria-label="2鈴の時刻（分:秒）"><span class="row-note">発表時間の終了</span></label>
+      <label class="row"><input type="checkbox" id="use-b3"><span class="row-name">3鈴</span><input type="text" id="b3" inputmode="numeric" autocomplete="off" aria-label="3鈴の時刻（分:秒）"><span class="row-note">質疑も含めた終了</span></label>
+      <p class="error" id="error" role="alert" hidden></p>
+    </div>
+
+    <h2>表示と音</h2>
+    <div class="row-group">
+      <div class="seg" role="radiogroup" aria-label="時間の表示">
+        <label><input type="radio" name="display" value="remaining"><span>残り時間</span></label>
+        <label><input type="radio" name="display" value="elapsed"><span>経過時間</span></label>
+      </div>
+      <label class="row inline"><span class="row-name">音量</span><input type="range" id="volume" min="0" max="1" step="0.05" aria-label="音量"></label>
+      <div class="row inline">
+        <button type="button" class="btn" id="btn-test">音を試す</button>
+        <label class="check"><input type="checkbox" id="mute"><span>消音（画面の点滅だけにする）</span></label>
+      </div>
+    </div>
+
+    <h2>設定を共有する</h2>
+    <div class="row-group">
+      <input type="text" id="share-url" readonly aria-label="共有用のURL">
+      <button type="button" class="btn" id="btn-copy">URLをコピー</button>
+      <span class="row-note" id="copy-note" role="status"></span>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>ブラウザの中だけで動き，何も送信しません．一度開けばオフラインでも使えます。</p>
+    <p>© 2026 <a href="https://alt4l.dev/">aL / alt4L</a></p>
+  </footer>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

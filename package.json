@@ -1,0 +1,22 @@
+{
+  "name": "talk-bell",
+  "version": "0.1.0",
+  "private": true,
+  "description": "発表ベル：学会・ゼミ向けの発表タイマー（1鈴・2鈴・3鈴）",
+  "author": "aL",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "typescript": "^5.6.0",
+    "vite": "^6.0.0",
+    "vitest": "^3.0.0"
+  }
+}
