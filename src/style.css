@@ -1,4 +1,4 @@
-/* 発表ベル：配色と雰囲気は alt4l.dev に合わせる．外部の通信はしないので，書体は端末のものを使う． */
+/* 発表ベル：配色と雰囲気は alt4l.dev に合わせる。外部の通信はしないので、書体は端末のものを使う。 */
 :root {
   --bg: #F4F6F4;
   --surface: #FFFFFF;
@@ -137,7 +137,7 @@ input[type="range"] { width: 180px; accent-color: var(--accent); }
 .foot { padding: 18px 20px 28px; text-align: center; color: var(--muted); font-size: 13px; }
 .foot p { margin: 2px 0; }
 
-/* 全画面のときは枠と余白をなくして，数字を大きく */
+/* 全画面のときは枠と余白をなくして、数字を大きく */
 :fullscreen .bar, :fullscreen .foot, :fullscreen .keys, :fullscreen .notice { display: none; }
 
 @media (max-width: 560px) {
@@ -146,7 +146,7 @@ input[type="range"] { width: 180px; accent-color: var(--accent); }
   .panel { padding: 16px; }
 }
 
-/* 動きを減らす設定：点滅はやめて，枠の色の変化だけにする */
+/* 動きを減らす設定：点滅はやめて、枠の色の変化だけにする */
 @media (prefers-reduced-motion: reduce) {
   .flash.on { animation: none; opacity: 0; }
   .stage.hit { border-color: var(--accent); }

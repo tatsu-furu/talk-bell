@@ -1,4 +1,4 @@
-/* 画面が描かれる前に，保存された明るさ（なければ端末の設定）を適用する */
+/* 画面が描かれる前に、保存された明るさ（なければ端末の設定）を適用する */
 (function () {
   var t = null;
   try { t = localStorage.getItem('talk-bell.theme'); } catch (e) {}
